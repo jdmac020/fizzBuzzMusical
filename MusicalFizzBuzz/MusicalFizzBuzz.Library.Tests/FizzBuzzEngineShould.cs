@@ -33,8 +33,6 @@ namespace MusicalFizzBuzz.Library.Tests
         [InlineData(6, 9, 12, 18, 36, 303)]
         public void ReturnFizzWhenMultipleOfThree(params int[] testInputs)
         {
-            _results = new List<string>();
-
             LoadResultsList(testInputs);
 
             _results.ShouldAllBe(result => result.Equals("Fizz"));
@@ -52,8 +50,6 @@ namespace MusicalFizzBuzz.Library.Tests
         [InlineData(10,20,100,4000)]
         public void ReturnBuzzWhenMultipleOfFive(params int[] testInputs)
         {
-            _results = new List<string>();
-
             LoadResultsList(testInputs);
 
             _results.ShouldAllBe(result => result.Equals("Buzz"));
@@ -63,8 +59,6 @@ namespace MusicalFizzBuzz.Library.Tests
         [InlineData(15,30,45,300,1500)]
         public void ReturnFizzBuzzForMultiplesOfThreeAndFive(params int[] testInputs)
         {
-            _results = new List<string>();
-
             LoadResultsList(testInputs);
 
             _results.ShouldAllBe(result => result.Equals("FizzBuzz"));
@@ -72,6 +66,8 @@ namespace MusicalFizzBuzz.Library.Tests
 
         private void LoadResultsList(int[] testInputs)
         {
+            _results = new List<string>();
+
             foreach (var input in testInputs)
             {
                 _results.Add(_fizzBuzz.Process(input));
