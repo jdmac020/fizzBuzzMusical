@@ -6,21 +6,26 @@ namespace MusicalFizzBuzz.Library
     {
         public string Process(int inputNumber)
         {
-            if (inputNumber % 5 == 0 &&
-                inputNumber % 3 == 0)
+            if (InputIsFactorOf(5, inputNumber) &&
+                InputIsFactorOf(3, inputNumber))
             {
                 return "FizzBuzz";
             }
-            if (inputNumber % 5 == 0)
+            if (InputIsFactorOf(5, inputNumber))
             {
                 return "Buzz";
             }
-            if (inputNumber % 3 == 0)
+            if (InputIsFactorOf(3,inputNumber))
             {
                 return "Fizz";
             }
 
             return inputNumber.ToString();
+        }
+
+        private bool InputIsFactorOf(int factor, int input)
+        {
+            return input % factor == 0;
         }
     }
 }
