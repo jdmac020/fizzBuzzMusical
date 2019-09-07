@@ -6,6 +6,10 @@ namespace MusicalFizzBuzz.Library
     {
         public string Process(int inputNumber)
         {
+            if (inputNumber % 5 == 0)
+            {
+                return "Buzz";
+            }
             if (inputNumber % 3 == 0)
             {
                 return "Fizz";

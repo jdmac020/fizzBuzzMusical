@@ -46,5 +46,30 @@ namespace MusicalFizzBuzz.Library.Tests
 
             results.ShouldAllBe(result => result.Equals("Fizz"));
         }
+
+        [Fact]
+        public void ReturnBuzzWhenFive()
+        {
+            var fizzBuzz = new FizzBuzzEngine();
+
+            var result = fizzBuzz.Process(5);
+
+            result.ShouldBe("Buzz");
+        }
+
+        [Theory]
+        [InlineData(10,20,100,4000)]
+        public void ReturnBuzzWhenMultipleOfFive(params int[] testInputs)
+        {
+            var fizzBuzz = new FizzBuzzEngine();
+            var results = new List<string>();
+
+            foreach (var input in testInputs)
+            {
+                results.Add(fizzBuzz.Process(input));
+            }
+
+            results.ShouldAllBe(result => result.Equals("Buzz"));
+        }
     }
 }
