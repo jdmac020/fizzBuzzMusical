@@ -11,7 +11,7 @@ namespace MusicalFizzBuzz.Library.Tests
         [InlineData(2, "2")]
         [InlineData(8, "8")]
         [InlineData(14, "14")]
-        public void ReturnNumber(int testInput, 
+        public void ReturnNumberWhenNotSpecial(int testInput, 
             string expectedResult)
         {
             var fizzBuzz = new FizzBuzzEngine();
@@ -19,6 +19,16 @@ namespace MusicalFizzBuzz.Library.Tests
             var result = fizzBuzz.Process(testInput);
 
             result.ShouldBe(expectedResult);
+        }
+
+        [Fact]
+        public void ReturnFizzWhenFactorOfThree()
+        {
+            var fizzBuzz = new FizzBuzzEngine();
+
+            var result = fizzBuzz.Process(3);
+
+            result.ShouldBe("Fizz");
         }
     }
 }
