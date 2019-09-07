@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicalFizzBuzz.Library", "MusicalFizzBuzz.Library\MusicalFizzBuzz.Library.csproj", "{621B813C-5CE7-4CE7-873A-A3C985F49E10}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicalFizzBuzz.Library", "MusicalFizzBuzz.Library\MusicalFizzBuzz.Library.csproj", "{621B813C-5CE7-4CE7-873A-A3C985F49E10}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MusicalFizzBuzz.Library.Tests", "MusicalFizzBuzz.Library.Tests\MusicalFizzBuzz.Library.Tests.csproj", "{0C09033B-BED5-4F52-B0FC-9C3108B018D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MusicalFizzBuzz.Library.Tests", "MusicalFizzBuzz.Library.Tests\MusicalFizzBuzz.Library.Tests.csproj", "{0C09033B-BED5-4F52-B0FC-9C3108B018D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

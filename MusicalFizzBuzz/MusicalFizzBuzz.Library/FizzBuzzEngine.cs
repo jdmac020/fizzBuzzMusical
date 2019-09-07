@@ -4,7 +4,7 @@ namespace MusicalFizzBuzz.Library
 {
     public class FizzBuzzEngine
     {
-        public object Process(int v)
+        public string Process(int inputNumber)
         {
             return 3.ToString();
         }
