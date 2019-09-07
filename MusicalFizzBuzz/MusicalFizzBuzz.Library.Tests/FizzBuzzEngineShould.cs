@@ -71,5 +71,15 @@ namespace MusicalFizzBuzz.Library.Tests
 
             results.ShouldAllBe(result => result.Equals("Buzz"));
         }
+
+        [Fact]
+        public void ReturnFizzBuzzWhenFifteen()
+        {
+            var fizzBuzz = new FizzBuzzEngine();
+
+            var result = fizzBuzz.Process(15);
+
+            result.ShouldBe("FizzBuzz");
+        }
     }
 }
