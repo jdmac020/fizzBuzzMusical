@@ -6,7 +6,7 @@ namespace MusicalFizzBuzz.Library
     {
         public string Process(int inputNumber)
         {
-            return 3.ToString();
+            return inputNumber.ToString();
         }
     }
 }

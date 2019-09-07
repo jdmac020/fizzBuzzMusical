@@ -7,14 +7,18 @@ namespace MusicalFizzBuzz.Library.Tests
 {
     public class FizzBuzzEngineShould
     {
-        [Fact]
-        public void ReturnNumber()
+        [Theory]
+        [InlineData(2, "2")]
+        [InlineData(8, "8")]
+        [InlineData(14, "14")]
+        public void ReturnNumber(int testInput, 
+            string expectedResult)
         {
             var fizzBuzz = new FizzBuzzEngine();
 
-            var result = fizzBuzz.Process(3);
+            var result = fizzBuzz.Process(testInput);
 
-            result.ShouldBe("3");
+            result.ShouldBe(expectedResult);
         }
     }
 }
