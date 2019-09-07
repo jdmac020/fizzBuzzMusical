@@ -81,5 +81,20 @@ namespace MusicalFizzBuzz.Library.Tests
 
             result.ShouldBe("FizzBuzz");
         }
+
+        [Theory]
+        [InlineData(30,45,300,1500)]
+        public void ReturnFizzBuzzForMultiplesOfThreeAndFive(params int[] testInputs)
+        {
+            var fizzBuzz = new FizzBuzzEngine();
+            var results = new List<string>();
+
+            foreach (var input in testInputs)
+            {
+                results.Add(fizzBuzz.Process(input));
+            }
+
+            results.ShouldAllBe(result => result.Equals("FizzBuzz"));
+        }
     }
 }
