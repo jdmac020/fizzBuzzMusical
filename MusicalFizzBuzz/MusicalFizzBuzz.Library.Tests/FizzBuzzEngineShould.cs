@@ -7,6 +7,7 @@ namespace MusicalFizzBuzz.Library.Tests
     public class FizzBuzzEngineShould
     {
         private FizzBuzzEngine _fizzBuzz = new FizzBuzzEngine();
+        private List<string> _results;
 
         [Theory]
         [InlineData(2, "2")]
@@ -32,14 +33,14 @@ namespace MusicalFizzBuzz.Library.Tests
         [InlineData(6, 9, 12, 18, 36, 303)]
         public void ReturnFizzWhenMultipleOfThree(params int[] testInputs)
         {
-            var results = new List<string>();
+            _results = new List<string>();
 
             foreach (var input in testInputs)
             {
-                results.Add(_fizzBuzz.Process(input));
+                _results.Add(_fizzBuzz.Process(input));
             }
 
-            results.ShouldAllBe(result => result.Equals("Fizz"));
+            _results.ShouldAllBe(result => result.Equals("Fizz"));
         }
 
         [Fact]
@@ -54,28 +55,28 @@ namespace MusicalFizzBuzz.Library.Tests
         [InlineData(10,20,100,4000)]
         public void ReturnBuzzWhenMultipleOfFive(params int[] testInputs)
         {
-            var results = new List<string>();
+            _results = new List<string>();
 
             foreach (var input in testInputs)
             {
-                results.Add(_fizzBuzz.Process(input));
+                _results.Add(_fizzBuzz.Process(input));
             }
 
-            results.ShouldAllBe(result => result.Equals("Buzz"));
+            _results.ShouldAllBe(result => result.Equals("Buzz"));
         }
 
         [Theory]
         [InlineData(15,30,45,300,1500)]
         public void ReturnFizzBuzzForMultiplesOfThreeAndFive(params int[] testInputs)
         {
-            var results = new List<string>();
+            _results = new List<string>();
 
             foreach (var input in testInputs)
             {
-                results.Add(_fizzBuzz.Process(input));
+                _results.Add(_fizzBuzz.Process(input));
             }
 
-            results.ShouldAllBe(result => result.Equals("FizzBuzz"));
+            _results.ShouldAllBe(result => result.Equals("FizzBuzz"));
         }
     }
 }
