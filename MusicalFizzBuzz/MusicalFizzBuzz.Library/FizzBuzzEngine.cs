@@ -9,7 +9,12 @@ namespace MusicalFizzBuzz.Library
         public string Process(int inputNumber)
         {
             _input = inputNumber;
+            
+            return GetString();
+        }
 
+        private string GetString()
+        {
             if (InputIsFactorOf(5) &&
                 InputIsFactorOf(3))
             {
