@@ -35,10 +35,7 @@ namespace MusicalFizzBuzz.Library.Tests
         {
             _results = new List<string>();
 
-            foreach (var input in testInputs)
-            {
-                _results.Add(_fizzBuzz.Process(input));
-            }
+            LoadResultsList(testInputs);
 
             _results.ShouldAllBe(result => result.Equals("Fizz"));
         }
@@ -57,10 +54,7 @@ namespace MusicalFizzBuzz.Library.Tests
         {
             _results = new List<string>();
 
-            foreach (var input in testInputs)
-            {
-                _results.Add(_fizzBuzz.Process(input));
-            }
+            LoadResultsList(testInputs);
 
             _results.ShouldAllBe(result => result.Equals("Buzz"));
         }
@@ -71,12 +65,17 @@ namespace MusicalFizzBuzz.Library.Tests
         {
             _results = new List<string>();
 
+            LoadResultsList(testInputs);
+
+            _results.ShouldAllBe(result => result.Equals("FizzBuzz"));
+        }
+
+        private void LoadResultsList(int[] testInputs)
+        {
             foreach (var input in testInputs)
             {
                 _results.Add(_fizzBuzz.Process(input));
             }
-
-            _results.ShouldAllBe(result => result.Equals("FizzBuzz"));
         }
     }
 }
