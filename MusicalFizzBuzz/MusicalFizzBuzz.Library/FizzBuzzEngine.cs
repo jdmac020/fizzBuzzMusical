@@ -4,28 +4,32 @@ namespace MusicalFizzBuzz.Library
 {
     public class FizzBuzzEngine
     {
+        private int _input;
+
         public string Process(int inputNumber)
         {
-            if (InputIsFactorOf(5, inputNumber) &&
-                InputIsFactorOf(3, inputNumber))
+            _input = inputNumber;
+
+            if (InputIsFactorOf(5) &&
+                InputIsFactorOf(3))
             {
                 return "FizzBuzz";
             }
-            if (InputIsFactorOf(5, inputNumber))
+            if (InputIsFactorOf(5))
             {
                 return "Buzz";
             }
-            if (InputIsFactorOf(3,inputNumber))
+            if (InputIsFactorOf(3))
             {
                 return "Fizz";
             }
 
-            return inputNumber.ToString();
+            return _input.ToString();
         }
 
-        private bool InputIsFactorOf(int factor, int input)
+        private bool InputIsFactorOf(int factor)
         {
-            return input % factor == 0;
+            return _input % factor == 0;
         }
     }
 }
