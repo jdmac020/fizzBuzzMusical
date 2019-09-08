@@ -4,7 +4,7 @@ namespace MusicalFizzBuzz.Library
 {
     public class SongPlayer
     {
-        public object Play(int[] testArray)
+        public string Play(int[] inputNotes)
         {
             return "Fizz Buzz FizzBuzz";
         }
