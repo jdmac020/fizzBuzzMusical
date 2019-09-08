@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace MusicalFizzBuzz.Library
 {
     public class SongPlayer
     {
-        public string Play(int[] inputNotes)
+        public IEnumerable<string> Play(IEnumerable<int> inputNotes)
         {
-            return "Fizz Buzz FizzBuzz";
+            return inputNotes.Select(note => note.ToString());
         }
     }
 }
