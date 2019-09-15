@@ -7,14 +7,24 @@ namespace MusicalFizzBuzz.Library
 {
     public class SongPlayer
     {
-        public IEnumerable<Note> Play()
+        private Song _song;
+        private FizzBuzzEngine _fizzBuzz;
+
+        public SongPlayer(Song song)
         {
-            return new List<Note>();
+            _song = song;
+            _fizzBuzz = new FizzBuzzEngine();
         }
 
         public IEnumerable<Note> Play(int[] noteInputs)
         {
-            return noteInputs.Select(note => new Note()).ToList();
+            return noteInputs.
+                Select(note => 
+                    new Note
+                    {
+                        Value = _fizzBuzz.Process(note)
+                    })
+                .ToList();
         }
     }
 }
