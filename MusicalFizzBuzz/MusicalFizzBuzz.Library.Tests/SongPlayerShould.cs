@@ -8,16 +8,28 @@ namespace MusicalFizzBuzz.Library.Tests
 {
     public class SongPlayerShould
     {
+        private int[] _noNumberNotes = new int[]
+        {
+            3,5,15
+        };
+
+        private Song _happyBirthday = new Song
+        {
+            Name = "Happy Birthday",
+            Tempo = new Dictionary<string, int>
+                {
+                    { "Fizz", 2 },
+                    { "Buzz", 4 },
+                    { "FizzBuzz", 8 }
+                }
+        };
+
         [Fact]
         public void ReturnListOfNotes()
         {
-            var player = new SongPlayer();
-            var noteInputs = new int[]
-            {
-                3,5,15
-            };
+            var player = new SongPlayer(_happyBirthday);
 
-            var result = player.Play(noteInputs);
+            var result = player.Play(_noNumberNotes);
             
             result.ShouldBeOfType<List<Note>>();
             result.Count().ShouldBe(3);
@@ -26,14 +38,9 @@ namespace MusicalFizzBuzz.Library.Tests
         [Fact]
         public void ReturnNotesThatMatchSong()
         {
-            var inputs = new int[]
-            {
-                3,5,15
-            };
+            var player = new SongPlayer(_happyBirthday);
 
-            var player = new SongPlayer();
-
-            var output = player.Play(inputs).ToList();
+            var output = player.Play(_noNumberNotes).ToList();
             var result = $"{output[0]}{output[1]}{output[2]}";
 
             result.ShouldBe("FizzBuzzFizzBuzz");
@@ -47,11 +54,28 @@ namespace MusicalFizzBuzz.Library.Tests
                 3,5,15,7
             };
 
-            var player = new SongPlayer();
+            var player = new SongPlayer(_happyBirthday);
 
             var result = player.Play(inputs);
 
             result.Last().ShouldBeOfType<Rest>();
+        }
+
+        [Fact]
+        public void ReturnsNotesWithBeatValuesMatchingCorrectSong()
+        {
+            var inputNotes = new int[]
+            {
+                5,3,5,5,5,15
+            };
+
+            var player = new SongPlayer(_happyBirthday);
+
+            var result = player.Play(inputNotes).ToList();
+
+            result[1].Beats.ShouldBe(2);
+            result[3].Beats.ShouldBe(4);
+            result.Last().Beats.ShouldBe(8);
         }
     }
 }

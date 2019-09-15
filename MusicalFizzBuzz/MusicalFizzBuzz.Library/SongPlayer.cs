@@ -8,10 +8,12 @@ namespace MusicalFizzBuzz.Library
     public class SongPlayer
     {
         private FizzBuzzEngine _fizzBuzz;
+        private Song _song;
 
-        public SongPlayer()
+        public SongPlayer(Song song)
         {
             _fizzBuzz = new FizzBuzzEngine();
+            _song = song;
         }
 
         public IEnumerable<Note> Play(int[] noteInputs)
@@ -28,7 +30,11 @@ namespace MusicalFizzBuzz.Library
                 }
                 else
                 {
-                    noteList.Add(new Note { Value = fizzBuzz });
+                    noteList.Add(new Note
+                    {
+                        Value = fizzBuzz,
+                        Beats = _song.Tempo[fizzBuzz]
+                    });
                 }
             }
 
