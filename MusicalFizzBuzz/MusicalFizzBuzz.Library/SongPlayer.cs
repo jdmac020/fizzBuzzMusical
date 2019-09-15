@@ -1,7 +1,5 @@
 ﻿using MusicalFizzBuzz.Library.Dto;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using static MusicalFizzBuzz.Library.Globals;
 
 namespace MusicalFizzBuzz.Library
@@ -38,7 +36,7 @@ namespace MusicalFizzBuzz.Library
 
         private Note NoteFactory(string noteName)
         {
-            var beats = GetBeats(noteName);
+            var beats = _song.Tempo[noteName];
 
             switch (noteName)
             {
@@ -51,11 +49,6 @@ namespace MusicalFizzBuzz.Library
                         Beats = beats
                     };
             }
-        }
-
-        private int GetBeats(string noteName)
-        {
-            return _song.Tempo[noteName];
         }
     }
 }

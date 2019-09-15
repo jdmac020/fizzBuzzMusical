@@ -26,12 +26,17 @@ namespace MusicalFizzBuzz.Library.Tests
                 }
         };
 
+        private SongPlayer _player;
+
+        public SongPlayerShould()
+        {
+            _player = new SongPlayer(_happyBirthday);
+        }
+
         [Fact]
         public void ReturnListOfNotes()
         {
-            var player = new SongPlayer(_happyBirthday);
-
-            var result = player.Play(_noNumberNotes);
+            var result = _player.Play(_noNumberNotes);
             
             result.ShouldBeOfType<List<Note>>();
             result.Count().ShouldBe(3);
@@ -40,9 +45,7 @@ namespace MusicalFizzBuzz.Library.Tests
         [Fact]
         public void ReturnNotesThatMatchSong()
         {
-            var player = new SongPlayer(_happyBirthday);
-
-            var output = player.Play(_noNumberNotes).ToList();
+            var output = _player.Play(_noNumberNotes).ToList();
             var result = $"{output[0]}{output[1]}{output[2]}";
 
             result.ShouldBe($"{Notes.FIZZ}{Notes.BUZZ}{Notes.FIZZ_BUZZ}");
@@ -56,9 +59,7 @@ namespace MusicalFizzBuzz.Library.Tests
                 3,5,15,7
             };
 
-            var player = new SongPlayer(_happyBirthday);
-
-            var result = player.Play(inputs);
+            var result = _player.Play(inputs);
 
             result.Last().ShouldBeOfType<Rest>();
         }
@@ -71,9 +72,7 @@ namespace MusicalFizzBuzz.Library.Tests
                 5,3,5,5,5,15
             };
 
-            var player = new SongPlayer(_happyBirthday);
-
-            var result = player.Play(inputNotes).ToList();
+            var result = _player.Play(inputNotes).ToList();
 
             result[1].Beats.ShouldBe(2);
             result[3].Beats.ShouldBe(4);
@@ -88,9 +87,7 @@ namespace MusicalFizzBuzz.Library.Tests
                 5,4,5,7,5,15
             };
 
-            var player = new SongPlayer(_happyBirthday);
-
-            var result = player.Play(inputNotes).ToList();
+            var result = _player.Play(inputNotes).ToList();
 
             result[1].Beats.ShouldBe(6);
             result[3].Beats.ShouldBe(6);
