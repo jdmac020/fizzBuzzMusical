@@ -16,13 +16,23 @@ namespace MusicalFizzBuzz.Library
 
         public IEnumerable<Note> Play(int[] noteInputs)
         {
-            return noteInputs.
-                Select(note => 
-                    new Note
-                    {
-                        Value = _fizzBuzz.Process(note)
-                    })
-                .ToList();
+            var noteList = new List<Note>();
+
+            foreach (var note in noteInputs)
+            {
+                var fizzBuzz = _fizzBuzz.Process(note);
+
+                if (int.TryParse(fizzBuzz,out int i))
+                {
+                    noteList.Add(new Rest());
+                }
+                else
+                {
+                    noteList.Add(new Note { Value = fizzBuzz });
+                }
+            }
+
+            return noteList;
         }
     }
 }

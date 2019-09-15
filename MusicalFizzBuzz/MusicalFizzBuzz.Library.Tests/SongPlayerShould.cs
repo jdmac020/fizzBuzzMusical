@@ -38,5 +38,20 @@ namespace MusicalFizzBuzz.Library.Tests
 
             result.ShouldBe("FizzBuzzFizzBuzz");
         }
+
+        [Fact]
+        public void ReturnRestNotesWhenPassedNonConvertables()
+        {
+            var inputs = new int[]
+            {
+                3,5,15,7
+            };
+
+            var player = new SongPlayer();
+
+            var result = player.Play(inputs);
+
+            result.Last().ShouldBeOfType<Rest>();
+        }
     }
 }
