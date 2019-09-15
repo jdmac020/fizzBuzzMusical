@@ -55,6 +55,7 @@ namespace MusicalFizzBuzz.ConsoleApp
                         if (count > 0)
                         {
                             Console.WriteLine();
+                            count++;
                         }
                         
                         Console.WriteLine(note.Value);
@@ -65,7 +66,6 @@ namespace MusicalFizzBuzz.ConsoleApp
                     }
                 }
 
-                count++;
                 Thread.Sleep(note.Beats * beat);
             }
 
