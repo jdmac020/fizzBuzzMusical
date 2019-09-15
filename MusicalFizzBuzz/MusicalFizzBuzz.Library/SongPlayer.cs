@@ -11,5 +11,10 @@ namespace MusicalFizzBuzz.Library
         {
             return new List<Note>();
         }
+
+        public IEnumerable<Note> Play(int[] noteInputs)
+        {
+            return noteInputs.Select(note => new Note()).ToList();
+        }
     }
 }
