@@ -22,23 +22,30 @@ namespace MusicalFizzBuzz.Library
 
             foreach (var note in noteInputs)
             {
-                var fizzBuzz = _fizzBuzz.Process(note);
+                var noteName = _fizzBuzz.Process(note);
 
-                if (int.TryParse(fizzBuzz,out int i))
+                if (int.TryParse(noteName,out int i))
                 {
-                    noteList.Add(new Rest(_song.Tempo["Rest"]));
+                    noteList.Add(
+                        new Rest(GetBeats())
+                        );
                 }
                 else
                 {
                     noteList.Add(new Note
                     {
-                        Value = fizzBuzz,
-                        Beats = _song.Tempo[fizzBuzz]
+                        Value = noteName,
+                        Beats = GetBeats(noteName)
                     });
                 }
             }
 
             return noteList;
+        }
+
+        private int GetBeats(string noteName = "Rest")
+        {
+            return _song.Tempo[noteName];
         }
     }
 }
