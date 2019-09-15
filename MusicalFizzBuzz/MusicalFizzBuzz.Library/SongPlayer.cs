@@ -26,21 +26,30 @@ namespace MusicalFizzBuzz.Library
 
                 if (int.TryParse(noteName,out int i))
                 {
-                    noteList.Add(
-                        new Rest(GetBeats())
-                        );
+                    noteName = "Rest";
                 }
-                else
-                {
-                    noteList.Add(new Note
-                    {
-                        Value = noteName,
-                        Beats = GetBeats(noteName)
-                    });
-                }
+
+                noteList.Add(NoteFactory(noteName));
             }
 
             return noteList;
+        }
+
+        private Note NoteFactory(string noteName)
+        {
+            var beats = GetBeats(noteName);
+
+            switch (noteName)
+            {
+                case "Rest":
+                    return new Rest(beats);
+                default:
+                    return new Note
+                    {
+                        Value = noteName,
+                        Beats = beats
+                    };
+            }
         }
 
         private int GetBeats(string noteName = "Rest")
