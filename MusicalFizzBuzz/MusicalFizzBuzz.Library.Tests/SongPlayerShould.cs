@@ -8,7 +8,7 @@ namespace MusicalFizzBuzz.Library.Tests
     public class SongPlayerShould
     {
         [Fact]
-        public void ReturnIEnumerableOfNotes()
+        public void ReturnListOfNotes()
         {
             var player = new SongPlayer();
 
