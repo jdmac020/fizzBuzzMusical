@@ -1,8 +1,10 @@
 ﻿using MusicalFizzBuzz.Library;
+using MusicalFizzBuzz.Library.Dto;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
+using static MusicalFizzBuzz.Library.Globals;
 
 namespace MusicalFizzBuzz.ConsoleApp
 {
@@ -12,34 +14,63 @@ namespace MusicalFizzBuzz.ConsoleApp
         {
             Console.WriteLine("Hello World!\n");
 
-            var fizzBuzz = new FizzBuzzEngine();
-
-            var inputs = Enumerable.Range(0, 500);
-
-            foreach (var input in inputs)
+            var beat = 250;
+            var song = new Song
             {
-                var result = fizzBuzz.Process(input);
-
-                if (int.TryParse(result, out int intVar) == false)
+                Name = "Axel F",
+                Tempo = new Dictionary<string, int>
                 {
-                    if (result == "FizzBuzz")
+                    { Notes.FIZZ, 1 },
+                    { Notes.BUZZ, 2 },
+                    { Notes.FIZZ_BUZZ, 4 },
+                    { Notes.REST, 1 }
+                }
+            };
+            var inputs = new int[]
+            {
+                5,3,2,3,3,3,3,3,
+                5,3,2,3,3,3,3,3,
+                3,3,3,3,3,15,
+                2,2,2,2,2,
+                5,3,2,3,3,3,3,3,
+                5,3,2,3,3,3,3,3,
+                3,3,3,3,3,15,
+                2,2,2,2,2,2
+            };
+            var songPlayer = new SongPlayer(song);
+
+            var output = songPlayer.Play(inputs);
+
+            Console.WriteLine("Press any key to start:");
+            Console.ReadLine();
+            Thread.Sleep(100);
+
+            var count = 0;
+            foreach (var note in output)
+            {
+                if (note.GetType() != typeof(Rest))
+                {
+                    if (!note.Value.Equals(Notes.FIZZ))
                     {
-                        Console.WriteLine(result);
-                        Thread.Sleep(300);
+                        if (count > 0)
+                        {
+                            Console.WriteLine();
+                        }
+                        
+                        Console.WriteLine(note.Value);
                     }
-                    if (result == "Buzz")
+                    else
                     {
-                        Console.Write($"{result} ");
-                        Thread.Sleep(250);
-                    }
-                    if (result == "Fizz")
-                    {
-                        Console.Write($"{result} ");
-                        Thread.Sleep(100);
+                        Console.Write(note.Value);
                     }
                 }
+
+                count++;
+                Thread.Sleep(note.Beats * beat);
             }
 
+            Console.WriteLine();
+            Console.WriteLine("Wah cha cha...");
             Console.ReadLine();
         }
     }
