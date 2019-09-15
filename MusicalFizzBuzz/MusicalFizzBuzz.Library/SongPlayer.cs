@@ -7,12 +7,10 @@ namespace MusicalFizzBuzz.Library
 {
     public class SongPlayer
     {
-        private Song _song;
         private FizzBuzzEngine _fizzBuzz;
 
-        public SongPlayer(Song song)
+        public SongPlayer()
         {
-            _song = song;
             _fizzBuzz = new FizzBuzzEngine();
         }
 

@@ -11,7 +11,7 @@ namespace MusicalFizzBuzz.Library.Tests
         [Fact]
         public void ReturnListOfNotes()
         {
-            var player = new SongPlayer(new Song());
+            var player = new SongPlayer();
             var noteInputs = new int[]
             {
                 3,5,15
@@ -26,17 +26,12 @@ namespace MusicalFizzBuzz.Library.Tests
         [Fact]
         public void ReturnNotesThatMatchSong()
         {
-            var song = new Song
-            {
-                Name = "FizzBuzz"
-            };
-
             var inputs = new int[]
             {
                 3,5,15
             };
 
-            var player = new SongPlayer(song);
+            var player = new SongPlayer();
 
             var output = player.Play(inputs).ToList();
             var result = $"{output[0]}{output[1]}{output[2]}";
