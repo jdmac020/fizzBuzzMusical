@@ -20,7 +20,8 @@ namespace MusicalFizzBuzz.Library.Tests
                 {
                     { "Fizz", 2 },
                     { "Buzz", 4 },
-                    { "FizzBuzz", 8 }
+                    { "FizzBuzz", 8 },
+                    { "Rest", 6 }
                 }
         };
 
@@ -75,6 +76,23 @@ namespace MusicalFizzBuzz.Library.Tests
 
             result[1].Beats.ShouldBe(2);
             result[3].Beats.ShouldBe(4);
+            result.Last().Beats.ShouldBe(8);
+        }
+
+        [Fact]
+        public void ReturnsRestsWithBeatValuesMatchingCorrectSong()
+        {
+            var inputNotes = new int[]
+            {
+                5,4,5,7,5,15
+            };
+
+            var player = new SongPlayer(_happyBirthday);
+
+            var result = player.Play(inputNotes).ToList();
+
+            result[1].Beats.ShouldBe(6);
+            result[3].Beats.ShouldBe(6);
             result.Last().Beats.ShouldBe(8);
         }
     }

@@ -26,7 +26,7 @@ namespace MusicalFizzBuzz.Library
 
                 if (int.TryParse(fizzBuzz,out int i))
                 {
-                    noteList.Add(new Rest());
+                    noteList.Add(new Rest(_song.Tempo["Rest"]));
                 }
                 else
                 {
