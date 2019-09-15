@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using static MusicalFizzBuzz.Library.Globals;
 
 namespace MusicalFizzBuzz.Library
 {
@@ -26,7 +27,7 @@ namespace MusicalFizzBuzz.Library
 
                 if (int.TryParse(noteName,out int i))
                 {
-                    noteName = "Rest";
+                    noteName = Notes.REST;
                 }
 
                 noteList.Add(NoteFactory(noteName));
@@ -41,7 +42,7 @@ namespace MusicalFizzBuzz.Library
 
             switch (noteName)
             {
-                case "Rest":
+                case Notes.REST:
                     return new Rest(beats);
                 default:
                     return new Note
@@ -52,7 +53,7 @@ namespace MusicalFizzBuzz.Library
             }
         }
 
-        private int GetBeats(string noteName = "Rest")
+        private int GetBeats(string noteName)
         {
             return _song.Tempo[noteName];
         }

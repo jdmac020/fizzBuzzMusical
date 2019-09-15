@@ -3,6 +3,7 @@ using Shouldly;
 using System.Collections.Generic;
 using MusicalFizzBuzz.Library.Dto;
 using System.Linq;
+using static MusicalFizzBuzz.Library.Globals;
 
 namespace MusicalFizzBuzz.Library.Tests
 {
@@ -18,10 +19,10 @@ namespace MusicalFizzBuzz.Library.Tests
             Name = "Happy Birthday",
             Tempo = new Dictionary<string, int>
                 {
-                    { "Fizz", 2 },
-                    { "Buzz", 4 },
-                    { "FizzBuzz", 8 },
-                    { "Rest", 6 }
+                    { Notes.FIZZ, 2 },
+                    { Notes.BUZZ, 4 },
+                    { Notes.FIZZ_BUZZ, 8 },
+                    { Notes.REST, 6 }
                 }
         };
 
@@ -44,7 +45,7 @@ namespace MusicalFizzBuzz.Library.Tests
             var output = player.Play(_noNumberNotes).ToList();
             var result = $"{output[0]}{output[1]}{output[2]}";
 
-            result.ShouldBe("FizzBuzzFizzBuzz");
+            result.ShouldBe($"{Notes.FIZZ}{Notes.BUZZ}{Notes.FIZZ_BUZZ}");
         }
 
         [Fact]
