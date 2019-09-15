@@ -1,25 +1,20 @@
 ﻿using Xunit;
 using Shouldly;
 using System.Collections.Generic;
+using MusicalFizzBuzz.Library.Dto;
 
 namespace MusicalFizzBuzz.Library.Tests
 {
     public class SongPlayerShould
     {
         [Fact]
-        public void ConvertIntIEnumerableToStringIEnumerable()
+        public void ReturnIEnumerableOfNotes()
         {
-            IEnumerable<int> testArray = new int[]
-            {
-                3,5,15
-            };
-            var expectedReturn = new List<string> { "3","5","15" };
+            var player = new SongPlayer();
 
-            var songPlayer = new SongPlayer();
-
-            var result = songPlayer.Play(testArray);
-
-            result.ShouldBe(expectedReturn);
+            var result = player.Play();
+            
+            result.ShouldBeOfType<List<Note>>();
         }
     }
 }

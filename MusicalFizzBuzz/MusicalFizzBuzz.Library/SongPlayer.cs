@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MusicalFizzBuzz.Library.Dto;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,9 +7,9 @@ namespace MusicalFizzBuzz.Library
 {
     public class SongPlayer
     {
-        public IEnumerable<string> Play(IEnumerable<int> inputNotes)
+        public IEnumerable<Note> Play()
         {
-            return inputNotes.Select(note => note.ToString());
+            return new List<Note>();
         }
     }
 }
